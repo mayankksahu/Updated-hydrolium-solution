@@ -1,73 +1,90 @@
-# Welcome to your Lovable project
+Smart Tank Monitor (Hydroleum Solution)
+A professional, real-time Internet of Things (IoT) dashboard designed for monitoring petrol pump fuel tanks. This application provides live contamination status, critical alerts, and detailed historical data analytics to ensure fuel integrity and operational safety.
 
-## Project info
+The UI is built to a high standard, featuring a responsive, soft-shadow aesthetic optimized for clarity and ease of use.
 
-**URL**: https://lovable.dev/projects/92d2fcb5-2797-4b26-a182-8182f5c1cadc
+✨ Key Features
+This application delivers critical monitoring capabilities to prevent costly fuel contamination:
 
-## How can I edit this code?
+Real-time Monitoring: Dynamic display of Water Level, Petrol Purity, Pump State, and Emergency Switch status with a 15-second data refresh interval from external IoT APIs.
 
-There are several ways of editing your application.
+Dynamic Visualization: Animated tank representation with wave effects and dynamic color-coding to visualize contamination levels.
 
-**Use Lovable**
+Multi-Level Alerts: Integration with external IoT and ML endpoints to provide multi-level alerts:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/92d2fcb5-2797-4b26-a182-8182f5c1cadc) and start prompting.
+Warning State: Visual flag if Water Level > 16%.
 
-Changes made via Lovable will be committed automatically to this repo.
+Critical Alert: Audio and visual pulsing alert if Water Level > 20%.
 
-**Use your preferred IDE**
+Historical Data & Reporting: Dedicated history viewer supporting filtering by date range and status.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Client-Side PDF Export: Functionality to generate and export professional, structured PDF reports of historical data.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Responsive UI: Fully optimized layout using a 12-column grid system for seamless viewing on desktop, tablet, and mobile devices.
 
-Follow these steps:
+🛠 Technology Stack
+This project is built using modern front-end technologies for speed and maintainability:
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+Category	Technology	Purpose
+Framework	React	Component-based UI development.
+Language	TypeScript	Ensures type safety and improves code quality.
+Build Tool	Vite	Extremely fast development server and optimized builds.
+Styling	Tailwind CSS	Utility-first framework for responsive, modern styling.
+Components	shadcn/ui	High-quality, customizable component primitives.
+Routing	React Router v6	Declarative navigation for the single-page application (SPA).
+
+Export to Sheets
+🚀 Getting Started
+Follow these instructions to set up the project locally for development.
+
+Prerequisites
+Node.js (LTS recommended)
+
+npm (comes with Node.js)
+
+Installation
+Clone the repository:
+
+Bash
+
 git clone <YOUR_GIT_URL>
+Navigate to the project directory:
 
-# Step 2: Navigate to the project directory.
+Bash
+
 cd <YOUR_PROJECT_NAME>
+Install dependencies:
 
-# Step 3: Install the necessary dependencies.
-npm i
+Bash
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
+Start the development server:
+
+Bash
+
 npm run dev
-```
+The application will be accessible at http://localhost:5173 (or the port specified by Vite).
 
-**Edit a file directly in GitHub**
+Testing Authentication
+The application uses protected routes. You can test the login functionality using the following credentials:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Field	Value
+Email	admin@tankmonitor.com
+Password	admin123
 
-**Use GitHub Codespaces**
+Export to Sheets
+⚙️ Data Integration (API Endpoints)
+The application utilizes the following endpoints for dynamic data:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Description	Endpoint	Fetch Type
+IoT Real-Time	https://api.thingspeak.com/channels/3024727/feeds.json?results=1	Polling (15-second interval)
+Historical Data	https://api.thingspeak.com/channels/3024727/feeds.json?results=10000	Fetch on History page load
+ML Threat Model	http://10.70.52.94:5000/api/threat	Polling (30-second interval)
 
-## What technologies are used for this project?
+Export to Sheets
+📦 Deployment
+To create a production-ready bundle of your application:
 
-This project is built with:
+Bash
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/92d2fcb5-2797-4b26-a182-8182f5c1cadc) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+npm run build
