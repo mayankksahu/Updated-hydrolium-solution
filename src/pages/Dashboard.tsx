@@ -52,7 +52,7 @@ export const Dashboard = () => {
 
   const fetchThreatData = async () => {
     try {
-      const response = await fetch("http://10.70.52.94:5000/api/threat");
+      const response = await fetch("https://ml-model-for-hydroleum-solution.onrender.com/api/threat");
       const data = await response.json();
       setThreatData(data);
     } catch (error) {
