@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 20% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 20% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 20% 20%;
+
+    --primary: 168 100% 32%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-glow: 168 100% 45%;
+
+    --secondary: 210 15% 95%;
+    --secondary-foreground: 215 20% 20%;
+
+    --muted: 210 15% 95%;
+    --muted-foreground: 215 15% 46%;
+
+    --accent: 30 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 168 100% 32%;
+
+    --radius: 0.75rem;
+    
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(168 100% 32%), hsl(168 100% 45%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 72% 50%));
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%), hsl(30 100% 50%));
+    
+    --shadow-elegant: 0 10px 40px -10px hsl(168 100% 32% / 0.2);
+    --shadow-glow: 0 0 30px hsl(168 100% 45% / 0.3);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 215 28% 12%;
+    --foreground: 210 20% 98%;
+
+    --card: 215 25% 15%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 215 25% 15%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 168 100% 45%;
+    --primary-foreground: 215 28% 12%;
+    
+    --primary-glow: 168 100% 55%;
+
+    --secondary: 215 20% 22%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 20% 22%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 30 100% 55%;
+    --accent-foreground: 215 28% 12%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 20% 25%;
+    --input: 215 20% 25%;
+    --ring: 168 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .floating-label-input {
+    position: relative;
+  }
+  
+  .floating-label-input input,
+  .floating-label-input textarea {
+    @apply w-full px-4 py-3 border-2 border-input rounded-lg bg-transparent 
+           focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none 
+           transition-all duration-300;
+  }
+  
+  .floating-label-input input::placeholder,
+  .floating-label-input textarea::placeholder {
+    opacity: 0;
+  }
+  
+  .floating-label-input label {
+    @apply absolute left-3 top-3 text-muted-foreground transition-all duration-300 pointer-events-none bg-card px-2;
+    font-size: 0.875rem;
+  }
+  
+  .floating-label-input input:focus + label,
+  .floating-label-input textarea:focus + label,
+  .floating-label-input input:not(:placeholder-shown) + label,
+  .floating-label-input textarea:not(:placeholder-shown) + label {
+    @apply -top-2 left-2 text-xs text-primary;
+  }
+}
+
+@layer utilities {
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(239, 68, 68, 0.8);
+    }
+  }
+  
+  .liquid-wave {
+    animation: wave 3s ease-in-out infinite;
+  }
+  
+  @keyframes wave {
+    0%, 100% {
+      transform: translateX(0) translateY(0);
+    }
+    25% {
+      transform: translateX(-5px) translateY(-2px);
+    }
+    75% {
+      transform: translateX(5px) translateY(2px);
+    }
+  }
+}
